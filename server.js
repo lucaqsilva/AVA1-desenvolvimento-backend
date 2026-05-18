@@ -8,7 +8,7 @@ app.use(express.json());
 
 app.get('/', (req, res) => {
     res.json({
-        mensagem: 'API Backend funcionando 🚀',
+        mensagem: 'API Backend funcionando',
         status: 'online'
     });
 });
