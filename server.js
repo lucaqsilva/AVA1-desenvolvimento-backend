@@ -1,16 +1,23 @@
-const http = require('http');
+const express = require('express');
 
-const server = http.createServer((req, res) => {
-    res.writeHead(200, {'Content-Type': 'application/json'});
+const app = express();
 
-    const resposta = {
-        mensagem: 'Backend funcionando com sucesso 🚀',
+app.use(express.json());
+
+app.get('/', (req, res) => {
+    res.json({
+        mensagem: 'API Backend funcionando 🚀',
         status: 'online'
-    };
-
-    res.end(JSON.stringify(resposta));
+    });
 });
 
-server.listen(5000, () => {
-    console.log('Servidor rodando em http://localhost:5000');
+app.get('/status', (req, res) => {
+    res.json({
+        servidor: 'ativo',
+        porta: 5000
+    });
+});
+
+app.listen(5000, () => {
+    console.log('Servidor rodando na porta 5000');
 });
